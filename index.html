@@ -511,38 +511,43 @@
 
         @media (max-width: 968px) {
             .nav {
-                flex-direction: column;
-                padding: 15px 5%;
+                flex-direction: row;
+                padding: 8px 5%;
                 gap: 15px;
+                justify-content: space-between;
             }
             
             .nav-right {
                 width: 100%;
-                flex-direction: column;
-                gap: 15px;
+                flex-direction: row;
+                gap: 10px;
             }
             
             .nav-links {
-                gap: 15px;
+                gap: 8px;
                 flex-wrap: wrap;
                 justify-content: center;
             }
             
             .nav-links a {
-                font-size: 13px;
+                font-size: 11px;
             }
-            
+            .dark-modr-btn{
+                width: 28px;
+                height: 28px;
+            }
             .logo {
-                font-size: 35px;
+                font-size: 22px;
+                letter-spacing: 1px;
             }
             
             .hero {
-                margin-top: 160px;
+                margin-top: 50px;
             }
             
             .hero-grid {
                 grid-template-columns: 1fr;
-                gap: 50px;
+                gap: 40px;
             }
             
             .gallery-grid {
@@ -550,7 +555,7 @@
             }
             
             .hero-text h1 {
-                font-size: 42px;
+                font-size: 36px;
             }
         }
 
