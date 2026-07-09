@@ -5,7 +5,34 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <style>
-        /* About */
+@import url('https://fonts.googleapis.com/css2?family=Amiri:wght@400;700&display=swap');
+
+.product-card {
+    position: relative;
+    overflow: hidden; 
+}
+.product-card::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: -100%; 
+    width: 50%;
+    height: 100%;
+    background: linear-gradient(90deg, transparent, rgba(201,169,97,0.4), transparent);
+    transition: 0.6s;
+    z-index: 2;
+    transform: skewX(-25deg); 
+}
+
+.product-card:hover::before {
+    left: 100%;
+}
+
+/* للدارك مود*/
+body.dark-mode .product-card::before {
+    background: linear-gradient(90deg, transparent, rgba(229,212,161,0.5), transparent);
+} 
+/* About */
 .about {
     padding: 120px 8%;
     display: grid;
@@ -30,7 +57,7 @@
 
 .about-img::after {
     content: '';
-    position: absolute;
+    position: absolute;  
     top: -20px;
     right: -20px;
     width: 100%;
@@ -38,9 +65,19 @@
     border: 2px solid #C9A961;
     z-index: -1;
 }
+.nav-links a.active::after {
+    content: '';
+    position: absolute;
+    bottom: -8px;
+    right: 0;
+    width: 100%;
+    height: 2px;
+    background: #C9A961;
+    border-radius: 2px;
+}
 
 .about-text h2 {
-    font-family: 'Playfair Display', serif;
+    font-family: 'REEM KUFI';
     font-size: 48px;
     margin-bottom: 25px;
     font-weight: 400;
@@ -54,14 +91,14 @@
 }
 
 .signature {
-    font-family: 'Playfair Display', serif;
+    font-family: 'REEM KUFI';
     font-size: 32px;
     color: #C9A961;
-    font-style: italic;
+    font-style: 'REEM KUFI';
     margin-top: 30px;
 }
 
-/* دارك مود للـ About */
+/* دارك مود  About */
 body.dark-mode .about {
     background: #1a1a1a;
 }
@@ -123,7 +160,7 @@ body.dark-mode .about-text p {
         }
 
         .logo {
-            font-family: 'Playfair Display', serif;
+            font-family: 'REEM KUFI';
             font-size: 50px;
             font-weight: 700;
             letter-spacing: 3px;
@@ -141,12 +178,14 @@ body.dark-mode .about-text p {
         }
 
         .nav-links a {
-            color: #2C2C2C;
+            color: #2c2c2c;
             text-decoration: none;
             font-size: 15px;
             transition: 0.3s;
-            font-weight: 400;
-        }
+            font-weight: 600;
+            transition: 0.3s;
+            position: relative;        
+            }
 
         .nav-links a:hover {
             color: #C9A961;
@@ -163,7 +202,7 @@ body.dark-mode .about-text p {
     display: flex;
     align-items: center;
     justify-content: center;
-    color: #222;
+    color: #C9A961;
 }
 
 .dark-mode-btn:hover {
@@ -174,10 +213,8 @@ body.dark-mode .about-text p {
     display: none;
 }
 
-.dark-mode-btn .moon-icon {
-    display: block;
+.dark-mode-btn .moon-icon { display: block;
 }
-
 body.dark-mode .dark-mode-btn {
     border-color: #fff;
     color: #fff;
@@ -209,13 +246,17 @@ body.dark-mode .dark-mode-btn .moon-icon {
         }
 
         .hero-text h1 {
-            font-family: 'Playfair Display', serif;
-            font-size: 64px;
-            font-weight: 400;
-            line-height: 1.2;
-            margin-bottom: 25px;
-        }
+    font-family: 'Amiri', serif;
+    font-size: 70px;
+    font-weight: 700;
+    line-height: 1.4;
+    margin-bottom: 25px;
+}
 
+.hero-text h1 .gold {
+    color: #C9A961;
+    font-style: normal; 
+}
         .hero-text h1 .gold {
             color: #C9A961;
             font-style: italic;
@@ -278,7 +319,7 @@ body.dark-mode .dark-mode-btn .moon-icon {
         }
 
         .section-title {
-            font-family: 'Playfair Display', serif;
+            font-family: 'REEM KUFI';
             font-size: 48px;
             font-weight: 400;
             color: #2C2C2C;
@@ -351,7 +392,7 @@ body.dark-mode .dark-mode-btn .moon-icon {
         }
 
         .cta-section h2 {
-            font-family: 'Playfair Display', serif;
+            font-family: 'REEM KUFI';
             font-size: 48px;
             margin-bottom: 20px;
             font-weight: 400;
@@ -404,6 +445,12 @@ body.dark-mode .dark-mode-btn .moon-icon {
         .footer-links a:hover {
             color: #C9A961;
         }
+
+        .nav-links a.active {color: #C9A961 !important;
+            font-family: 'cairo', sans-serif;
+            font-weight: 600;
+        }
+
 
         .footer p {
             color: #999;
@@ -510,7 +557,7 @@ body.dark-mode .dark-mode-btn .moon-icon {
 
         @media (max-width: 968px) {
     .nav {
-        flex-direction: row;
+        flex-direction: column;
         padding: 15px 5%;
         gap: 15px;
     }
@@ -549,7 +596,6 @@ body.dark-mode .dark-mode-btn .moon-icon {
         font-size: 42px;
     }
 }
-        }
 
         @media (max-width: 600px) {
             .back-to-top {
@@ -590,6 +636,69 @@ body.dark-mode .order-btn:hover {
     background: transparent;
     color: #C9A961;
 }
+.particles {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    pointer-events: none;
+    z-index: 0;
+}
+
+.particle {
+    position: absolute;
+    width: 3px;
+    height: 3px;
+    background: #C9A961;
+    border-radius: 50%;
+    opacity: 0.4;
+    animation: floatUp linear infinite;
+}
+
+body.dark-mode .particle {
+    background: #E5D4A1;
+    opacity: 0.6;
+}
+
+@keyframes floatUp {
+    from {
+        transform: translateY(100vh);
+        opacity: 0;
+    }
+    50% {
+        opacity: 0.4;
+    }
+    to {
+        transform: translateY(-10vh);
+        opacity: 0;
+    }
+}
+.gallery-item .image-wrapper {
+    position: relative;
+    overflow: hidden; 
+}
+
+.gallery-item .image-wrapper::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: -100%;
+    width: 50%;
+    height: 100%;
+    background: linear-gradient(90deg, transparent, rgba(201,169,97,0.4), transparent);
+    transition: 0.6s ease;
+    z-index: 2;
+    transform: skewX(-20deg);
+}
+
+.gallery-item:hover .image-wrapper::before {
+    left: 120%;
+}
+
+body.dark-mode .gallery-item .image-wrapper::before {
+    background: linear-gradient(90deg, transparent, rgba(229,212,161,0.5), transparent);
+}
     </style>
 </head>
 <body>
@@ -599,9 +708,10 @@ body.dark-mode .order-btn:hover {
         <div class="logo">اصالة<span>.</span></div>
         <div class="nav-right">
             <ul class="nav-links">
-                <li><a href="index.html">الرئيسية</a></li>
-                <li><a href="dress.html">الفساتين</a></li>
-                <li><a href="contact.html">تواصلي معانا</a></li>
+                <li><a href="index.html"
+                    class="active">الرئيسية</a></li>
+                <li><a href="dress.html" title="شوفي كل الفساتين" >الفساتين</a></li>
+                <li><a href="contact.html" title=" contact us" >تواصلي معانا</a></li>
             </ul>
             <button id="darkModeToggle" class="dark-mode-btn" aria-label="Toggle Dark Mode">
                 <svg class="moon-icon" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
@@ -633,7 +743,6 @@ body.dark-mode .order-btn:hover {
             </div>
             <div class="hero-img">
                 <img src="dress2.jpg" alt="Hero Image">
-            </div>
         </div>
     </section>
 
@@ -679,7 +788,6 @@ body.dark-mode .order-btn:hover {
                     <p>خامة حرير فاخرة • تصميم عصري</p>
                     <div class="price">2,500 ج.م</div>
                     <a href="https://wa.me/201021528577?text=عايزة%20عباية%20الأناقة%20بـ%202500ج" class="order-btn">اطلبيها واتساب</a>
-                </div>
             </div>
         
             <div class="gallery-item">
@@ -691,7 +799,6 @@ body.dark-mode .order-btn:hover {
                     <p>نقوش تراثية • ألوان جذابة</p>
                     <div class="price">2,200 ج.م</div>
                     <a href="https://wa.me/201021528577?text=عايزة%20عباية%20الخليج%20بـ%202200ج" class="order-btn">اطلبيها واتساب</a>
-                </div>
             </div>
         
             <div class="gallery-item">
@@ -703,7 +810,6 @@ body.dark-mode .order-btn:hover {
                     <p>قصة واسعة • مريحة وأنيقة</p>
                     <div class="price">2,000 ج.م</div>
                     <a href="https://wa.me/201021528577?text=عايزة%20عباية%20القمر%20بـ%202000ج" class="order-btn">اطلبيها واتساب</a>
-                </div>
             </div>
         
             <div class="gallery-item">
@@ -716,20 +822,17 @@ body.dark-mode .order-btn:hover {
                     <div class="price">2,600 ج.م</div>
                     <a href="https://wa.me/201021528577?text=عايزة%20عباية%20الورد%20بـ%202600ج" class="order-btn">اطلبيها واتساب</a>
                 </div>
-            </div>
-        
-        </div>
-    </section>
-</section>  <!-- قفلة collections -->
+</section>
 
 <!-- About Section -->
 <section class="about" id="about">
     <div class="about-text">
         <div class="section-label">ABOUT Asalah</div>
         <h2>قصة أصاله</h2>
-        <p>بدأت رحلتي مع تصميم العبايات من حبي للتفاصيل الدقيقة واللمسة الفاخرة. كل عباية بصممها لازم تعكس شخصية اللي لابساها.</p>
-        <p>بشتغل على كل قطعة بنفسي من أول اختيار القماش لحد آخر غرزة, كل كولكشن محدود وإصدار خاص.</p>
-        <p>هدفي إنك لما تلبسي من أصاله تحسي إنك ملكة في كل خطوة.</p>
+        <p>كل عباية هنا اتعملت علشان لحظتك انتي.
+        <p>مش مجرد قماش وتفاصيل، دي قطعة بتقول "انا وصلت".في اصالة بنؤمن ان الفخامة مش في السعر، الفخامة في احساسك وانتي لابساه.
+            كل كولكشن محدود، كل تصميم ليه قصة، وكل بنت ليها بصمتها.لانك مش اي حد، وانتي تستاهلي تكوني اصالة.</p>
+</p>
         <div class="signature">Asalah</div>
     </div>
     <div class="about-img">
@@ -737,8 +840,6 @@ body.dark-mode .order-btn:hover {
     </div>
 </section>
 
-<!-- CTA -->
-<section class="cta-section" id="contact">
     <!-- CTA -->
     <section class="cta-section" id="contact">
         <h2>اطلبي تصميمك الخاص</h2>
@@ -756,11 +857,9 @@ body.dark-mode .order-btn:hover {
         <p>Asalah Fashion © 2026 — Designed by ROUEDA</p>
     </footer>
 
-    <!-- زرار اطلع فوق -->
     <button id="backToTop" class="back-to-top">↑</button>
 
     <script>
-        // شيل الهاش من اللينك واطلعي فوق أول ما الصفحة تحمل
         if (window.location.hash) {
             history.replaceState(null, null, ' ');
         }
@@ -787,7 +886,7 @@ body.dark-mode .order-btn:hover {
             });
         });
     
-        // الدارك مود - مفيش <script> هنا
+        // الدارك مود  
         const darkModeToggle = document.getElementById('darkModeToggle');
         const body = document.body;
         
@@ -805,6 +904,19 @@ body.dark-mode .order-btn:hover {
             }
         });
         
+    </script>
+    <div class="particles"></div>
+
+    <script>
+    const particlesContainer = document.querySelector('.particles');
+    for(let i = 0; i < 20; i++) {
+        const particle = document.createElement('span');
+        particle.classList.add('particle');
+        particle.style.left = Math.random() * 100 + '%';
+        particle.style.animationDelay = Math.random() * 1 + 's';
+        particle.style.animationDuration = Math.random() * 10 + 10 + 's';
+        particlesContainer.appendChild(particle);
+    }
     </script>
     </body>
     </html>
