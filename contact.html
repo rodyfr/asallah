@@ -1,0 +1,586 @@
+<!DOCTYPE html>
+<html lang="ar" dir="rtl">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>تواصلي معانا - اصالة</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
+    <style>
+        @import url('https://fonts.googleapis.com/css2?family=Cairo:wght@300;400;600;700&family=Playfair+Display:wght@400;700&family=Amiri:wght@400;700&family=El+Messiri:wght@400;600;700&display=swap');
+        
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+        
+        body {
+            background: #FAF9F6;
+            font-family: 'Cairo', sans-serif;
+            color: #2C2C2C;
+            overflow-x: hidden;
+        }
+
+        /* نفس النافبار بتاعك */
+        .nav {
+            position: fixed;
+            top: 0;
+            width: 100%;
+            padding: 20px 8%;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            z-index: 1000;
+            background: rgba(250, 249, 246, 0.95);
+            backdrop-filter: blur(10px);
+            border-bottom: 1px solid rgba(0,0,0,0.05);
+        }
+
+        .nav-right {
+            display: flex;
+            align-items: center;
+            gap: 30px;
+        }
+
+        .logo {
+            font-family: 'Playfair Display', serif;
+            font-size: 50px;
+            font-weight: 700;
+            letter-spacing: 3px;
+            color: #2C2C2C;
+        }
+
+        .logo span {
+            color: #C9A961;
+        }
+
+        .nav-links {
+            display: flex;
+            gap: 40px;
+            list-style: none;
+        }
+
+        .nav-links a {
+            color: #2C2C2C;
+            text-decoration: none;
+            font-size: 15px;
+            transition: 0.3s;
+            font-weight: 400;
+            position: relative;
+        }
+
+        .nav-links a:hover {
+            color: #C9A961;
+        }
+
+        .nav-links a.active {
+            color: #C9A961;
+            font-weight: 600;
+        }
+
+        .nav-links a.active::after {
+            content: '';
+            position: absolute;
+            bottom: -8px;
+            right: 0;
+            width: 100%;
+            height: 2px;
+            background: #C9A961;
+        }
+
+        .dark-mode-btn {
+            background: transparent;
+            border: 2px solid #222;
+            border-radius: 50%;
+            width: 40px;
+            height: 40px;
+            cursor: pointer;
+            transition: all 0.3s ease;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            color: #222;
+            font-size: 20px;
+        }
+        
+        .dark-mode-btn:hover {
+            transform: rotate(20deg);
+        }
+
+        /* عنوان الصفحة */
+        .page-header {
+            padding: 150px 8% 60px;
+            text-align: center;
+            background: #fff;
+        }
+
+        .page-label {
+            color: #C9A961;
+            font-family: 'El Messiri', sans-serif;
+            font-size: 14px;
+            letter-spacing: 0px;
+            margin-bottom: 12px;
+            font-weight: 600;
+        }
+
+        .page-title {
+            font-family: 'Amiri', serif;
+            font-size: 64px;
+            font-weight: 700;
+            color: #2C2C2C;
+            margin-bottom: 15px;
+            line-height: 1.3;
+        }
+
+        .page-desc {
+            color: #666;
+            font-size: 17px;
+            max-width: 600px;
+            margin: 0 auto;
+        }
+
+        /* قسم التواصل */
+        .contact-section {
+            padding: 80px 8% 100px;
+            background: #FAF9F6;
+        }
+
+        .contact-grid {
+            display: grid;
+            grid-template-columns: repeat(2, 1fr);
+            gap: 60px;
+            max-width: 1200px;
+            margin: 0 auto;
+        }
+
+        /* معلومات التواصل */
+        .contact-info {
+            background: #fff;
+            padding: 50px 40px;
+            border-radius: 16px;
+            box-shadow: 0 4px 15px rgba(0,0,0,0.08);
+        }
+
+        .contact-info h2 {
+            font-family: 'Amiri', serif;
+            font-size: 32px;
+            margin-bottom: 30px;
+            color: #2C2C2C;
+        }
+
+        .info-item {
+            display: flex;
+            align-items: start;
+            gap: 20px;
+            margin-bottom: 35px;
+        }
+
+        .info-icon {
+            width: 50px;
+            height: 50px;
+            background: #C9A961;
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            color: #fff;
+            font-size: 22px;
+            flex-shrink: 0;
+        }
+
+        .info-text h3 {
+            font-size: 18px;
+            margin-bottom: 8px;
+            color: #2C2C2C;
+        }
+
+        .info-text p {
+            color: #666;
+            font-size: 15px;
+            line-height: 1.6;
+        }
+
+        .info-text a {
+            color: #C9A961;
+            text-decoration: none;
+            transition: 0.3s;
+        }
+
+        .info-text a:hover {
+            color: #2C2C2C;
+        }
+
+        /* الفورم */
+        .contact-form {
+            background: #fff;
+            padding: 50px 40px;
+            border-radius: 16px;
+            box-shadow: 0 4px 15px rgba(0,0,0,0.08);
+        }
+
+        .contact-form h2 {
+            font-family: 'Amiri', serif;
+            font-size: 32px;
+            margin-bottom: 30px;
+            color: #2C2C2C;
+        }
+
+        .form-group {
+            margin-bottom: 25px;
+        }
+
+        .form-group label {
+            display: block;
+            margin-bottom: 10px;
+            font-weight: 600;
+            color: #2C2C2C;
+            font-size: 14px;
+        }
+
+        .form-group input,
+        .form-group textarea,
+        .form-group select {
+            width: 100%;
+            padding: 14px 18px;
+            border: 2px solid #E0E0E0;
+            border-radius: 10px;
+            font-family: 'Cairo', sans-serif;
+            font-size: 15px;
+            transition: 0.3s;
+            background: #FAF9F6;
+        }
+
+        .form-group input:focus,
+        .form-group textarea:focus,
+        .form-group select:focus {
+            outline: none;
+            border-color: #C9A961;
+            background: #fff;
+        }
+
+        .form-group textarea {
+            resize: vertical;
+            min-height: 120px;
+        }
+
+        .submit-btn {
+            width: 100%;
+            background: #C9A961;
+            color: #fff;
+            padding: 16px;
+            border: none;
+            border-radius: 50px;
+            font-size: 16px;
+            font-weight: 700;
+            cursor: pointer;
+            transition: 0.3s;
+            font-family: 'Cairo', sans-serif;
+        }
+
+        .submit-btn:hover {
+            background: #2C2C2C;
+            transform: translateY(-2px);
+        }
+
+        /* سوشيال ميديا */
+        .social-links {
+            display: flex;
+            gap: 15px;
+            margin-top: 40px;
+            padding-top: 30px;
+            border-top: 1px solid #eee;
+        }
+
+        .social-links a {
+            width: 45px;
+            height: 45px;
+            background: #FAF9F6;
+            border: 2px solid #E0E0E0;
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            color: #666;
+            font-size: 20px;
+            text-decoration: none;
+            transition: 0.3s;
+        }
+
+        .social-links a:hover {
+            background: #C9A961;
+            border-color: #C9A961;
+            color: #fff;
+            transform: translateY(-3px);
+        }
+
+        /* موبايل */
+        @media (max-width: 968px) {
+            .contact-grid {
+                grid-template-columns: 1fr;
+                gap: 40px;
+            }
+            .nav-links {
+                display: none;
+            }
+            .page-title {
+                font-size: 42px;
+            }
+            .contact-info, .contact-form {
+                padding: 35px 25px;
+            }
+        }
+
+        /* Footer */
+        .footer {
+            padding: 50px 8%;
+            text-align: center;
+            background: #fff;
+            border-top: 1px solid rgba(0,0,0,0.05);
+        }
+
+        .footer-links {
+            display: flex;
+            justify-content: center;
+            gap: 40px;
+            margin-bottom: 25px;
+        }
+
+        .footer-links a {
+            color: #666;
+            text-decoration: none;
+            font-size: 14px;
+            transition: 0.3s;
+        }
+
+        .footer-links a:hover {
+            color: #C9A961;
+        }
+
+        .footer p {
+            color: #999;
+            font-size: 13px;
+        }
+
+        /* دارك مود */
+        body.dark-mode {
+            background: #1a1a1a;
+            color: #e0e0e0;
+        }
+        body.dark-mode .dark-mode-btn {
+    border-color: #fff;
+    color: #fff;
+}
+
+        body.dark-mode .nav {
+            background: rgba(26, 26, 26, 0.95);
+            border-bottom: 1px solid rgba(255,255,255,0.1);
+        }
+
+        body.dark-mode .logo,
+        body.dark-mode .nav-links a {
+            color: #e0e0e0;
+        }
+
+        body.dark-mode .page-header {
+            background: #1a1a1a;
+        }
+
+        body.dark-mode .page-title {
+            color: #fff;
+        }
+
+        body.dark-mode .contact-section {
+            background: #1a1a1a;
+        }
+
+        body.dark-mode .contact-info,
+        body.dark-mode .contact-form {
+            background: #2a2a2a;
+            box-shadow: 0 4px 15px rgba(0,0,0,0.3);
+        }
+
+        body.dark-mode .contact-info h2,
+        body.dark-mode .contact-form h2,
+        body.dark-mode .info-text h3,
+        body.dark-mode .form-group label {
+            color: #fff;
+        }
+
+        body.dark-mode .form-group input,
+        body.dark-mode .form-group textarea,
+        body.dark-mode .form-group select {
+            background: #1a1a1a;
+            border-color: #444;
+            color: #fff;
+        }
+
+        body.dark-mode .footer {
+            background: #111;
+            border-top: 1px solid rgba(255,255,255,0.1);
+        }
+    </style>
+</head>
+<body>
+  <nav class="nav">
+    <div class="logo">اصالة<span>.</span></div>
+    <div class="nav-right">
+      <ul class="nav-links">
+        <li><a href="index.html">الرئيسية</a></li>
+        <li><a href="dress.html">الفساتين</a></li>
+        <li><a href="contact.html" class="active">تواصلي معانا</a></li>
+      </ul>
+      <button id="darkModeToggle" class="dark-mode-btn" aria-label="Toggle Dark Mode">
+        <span id="modeIcon">🌙</span>
+      </button>
+    </div>
+  </nav>
+
+  <!-- عنوان الصفحة -->
+  <div class="page-header">
+    <div class="page-label">نسعد بخدمتك</div>
+    <h1 class="page-title">تواصلي معانا</h1>
+    <p class="page-desc">عندك سؤال عن فستان؟ عايزة تحجزي موعد؟ احنا هنا علشانك</p>
+  </div>
+
+  <!-- قسم التواصل -->
+  <div class="contact-section">
+    <div class="contact-grid">
+      <!-- معلومات التواصل -->
+      <div class="contact-info">
+        <h2>معلومات التواصل</h2>
+        
+        <div class="info-item">
+          <div class="info-icon"><i class="fas fa-location-dot"></i></div>
+          <div class="info-text">
+            <h3>العنوان</h3>
+            <p>القاهرة، مصر الجديدة<br>شارع النزهة، عمارة 15</p>
+          </div>
+        </div>
+
+        <div class="info-item">
+          <div class="info-icon"><i class="fas fa-phone"></i></div>
+          <div class="info-text">
+            <h3>التليفون</h3>
+            <p><a href="tel:+201021528577">+20 102 152 8577</a></p>
+            <p><a href="tel:+201092353180">+20 109 235 3180</a></p>
+          </div>
+        </div>
+
+        <div class="info-item">
+          <div class="info-icon"><i class="fas fa-envelope"></i></div>
+          <div class="info-text">
+            <h3>الإيميل</h3>
+            <p><a href="mailto:roueda.rody@gmail.com">roueda.rody@gmail.com</a></p>
+          </div>
+        </div>
+
+        <div class="info-item">
+          <div class="info-icon"><i class="fas fa-clock"></i></div>
+          <div class="info-text">
+            <h3>مواعيد العمل</h3>
+            <p>السبت - الخميس: 10 صباحاً - 10 مساءً<br>الجمعة: 2 ظهراً - 10 مساءً</p>
+          </div>
+        </div>
+
+        <div class="social-links">
+          <a href="https://www.instagram.com/roueda_rody/" target="_blank" aria-label="Instagram">
+            <i class="fab fa-instagram"></i>
+          </a>
+          <a href="https://www.facebook.com/roueda.rody/" target="_blank" aria-label="Facebook">
+            <i class="fab fa-facebook-f"></i>
+          </a>
+          <a href="https://wa.me/201021528577" target="_blank" aria-label="WhatsApp">
+            <i class="fab fa-whatsapp"></i>
+          </a>
+          <a href="https://www.tiktok.com/@rouedarody?lang=ar" target="_blank" aria-label="TikTok">
+            <i class="fab fa-tiktok"></i>
+          </a>
+        </div>
+      </div>
+
+      <!-- الفورم -->
+      <div class="contact-form">
+        <h2>ابعتي رسالة</h2>
+        <form id="contactForm">
+          <div class="form-group">
+            <label>الاسم بالكامل *</label>
+            <input type="text" name="name" required placeholder="اسمك">
+          </div>
+
+          <div class="form-group">
+            <label>رقم الموبايل *</label>
+            <input type="tel" name="phone" required placeholder="01xxxxxxxxx">
+          </div>
+
+          <div class="form-group">
+            <label>الإيميل</label>
+            <input type="email" name="email" placeholder="example@mail.com">
+          </div>
+
+          <div class="form-group">
+            <label>نوع الفستان المهتمة بيه</label>
+            <select name="dress-type">
+              <option value="">اختاري الفستان</option>
+              <option value="celeste">Celeste - فستان أميرة</option>
+              <option value="luna">Luna - كلاسيك</option>
+              <option value="velora">Velora - حورية البحر</option>
+              <option value="talia">Talia - A-line</option>
+              <option value="rosaline">Rosaline - بوهيمي</option>
+              <option value="diana">Diana</option>
+            </select>
+          </div>
+
+          <div class="form-group">
+            <label>رسالتك *</label>
+            <textarea name="message" required placeholder="اكتبي سؤالك أو استفسارك هنا..."></textarea>
+          </div>
+
+          <button type="submit" class="submit-btn">ارسلي الرسالة</button>
+        </form>
+      </div>
+    </div>
+  </div>
+
+  <!-- Footer -->
+  <footer class="footer">
+    <div class="footer-links">
+      <a href="index.html">الرئيسية</a>
+      <a href="dress.html">الفساتين</a>
+      <a href="contact.html">تواصلي معانا</a>
+    </div>
+    <p>© 2026 اصالة. جميع الحقوق محفوظة</p>
+  </footer>
+
+  <script>
+    // الدارك مود
+    const darkModeToggle = document.getElementById('darkModeToggle');
+    const modeIcon = document.getElementById('modeIcon');
+    const body = document.body;
+    
+    if (localStorage.getItem('darkMode') === 'enabled') {
+      body.classList.add('dark-mode');
+      modeIcon.textContent = '☀️';
+    } else {
+      modeIcon.textContent = '☾︎';
+    }
+
+    darkModeToggle.addEventListener('click', function() {
+      body.classList.toggle('dark-mode');
+      if (body.classList.contains('dark-mode')) {
+        localStorage.setItem('darkMode', 'enabled');
+        modeIcon.textContent = '☀️';
+      } else {
+        localStorage.setItem('darkMode', 'disabled');
+        modeIcon.textContent = '☾︎';
+      }
+    });
+
+    // الفورم
+    document.getElementById('contactForm').addEventListener('submit', function(e) {
+      e.preventDefault();
+      alert('شكراً لتواصلك معانا! هنرد عليكي في أقرب وقت ❤️');
+      this.reset();
+    });
+  </script>
+</body>
+</html>
