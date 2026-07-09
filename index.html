@@ -509,16 +509,46 @@ body.dark-mode .dark-mode-btn .moon-icon {
         }
 
         @media (max-width: 968px) {
-            .hero-grid {
-                grid-template-columns: 1fr;
-                gap: 50px;
-            }
-            .gallery-grid {
-                grid-template-columns: 1fr;
-            }
-            .hero-text h1 {
-                font-size: 42px;
-            }
+    .nav {
+        flex-direction: column;
+        padding: 15px 5%;
+        gap: 15px;
+    }
+    
+    .nav-right {
+        width: 100%;
+        justify-content: space-between;
+    }
+    
+    .nav-links {
+        gap: 20px;
+    }
+    
+    .nav-links a {
+        font-size: 13px;
+    }
+    
+    .logo {
+        font-size: 35px;
+    }
+    
+    .hero {
+        margin-top: 140px;
+    }
+    
+    .hero-grid {
+        grid-template-columns: 1fr;
+        gap: 50px;
+    }
+    
+    .gallery-grid {
+        grid-template-columns: 1fr;
+    }
+    
+    .hero-text h1 {
+        font-size: 42px;
+    }
+}
         }
 
         @media (max-width: 600px) {
