@@ -509,57 +509,46 @@
             color: #aaa;
         }
 
-        @media (max-width: 968px) {
-            .nav {
-                flex-direction: row;
-                padding: 10px 5%;
-                gap: 15px;
-                justify-content: space-between;
-            }
-            
-            .nav-right {
-                width: 100%;
-                flex-direction: row;
-                gap: 10px;
-            }
-            
-            .nav-links {
-                gap: 8px;
-                flex-wrap: wrap;
-                justify-content: center;
-            }
-            
-            .nav-links a {
-                font-size: 20px;
-            }
-            .dark-modr-btn{
-                width: 28px;
-                height: 28px;
-            }
-            .logo {
-                font-size: 22px;
-                letter-spacing: 1px;
-            }
-            
-            .hero {
-                margin-top: 50px;
-            }
-            
-            .hero-grid {
-                grid-template-columns: 1fr;
-                gap: 40px;
-            }
-            
-            .gallery-grid {
-                grid-template-columns: 1fr;
-            }
-            
-            .hero-text h1 {
-                font-size: 36px;
-            }
-        }
-
-        @media (max-width: 600px) {
+@media (max-width: 968px) {
+    .nav {
+        height: 50px;
+        padding: 0 5%;
+        flex-direction: row;
+        justify-content: space-between;
+        align-items: center;
+        gap: 0;
+    }
+    
+    .logo {
+        font-size: 20px;
+        display: block;
+    }
+    
+    .nav-right {
+        flex-direction: row;
+        gap: 8px;
+        align-items: center;
+    }
+    
+    .nav-links {
+        gap: 8px;
+        flex-wrap: nowrap;
+    }
+    
+    .nav-links a {
+        font-size: 10px;
+        white-space: nowrap;
+    }
+    
+    .dark-mode-btn {
+        width: 26px;
+        height: 26px;
+    }
+    
+    .hero {
+        margin-top: 50px;
+    }
+}        @media (max-width: 600px) {
             .back-to-top {
                 bottom: 20px;
                 left: 20px;
